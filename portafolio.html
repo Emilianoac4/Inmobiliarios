@@ -171,7 +171,7 @@
     .cover__brand {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 13px;
+      font-size: 28px;
       letter-spacing: 0.45em;
       color: var(--gold);
       text-transform: uppercase;
@@ -425,13 +425,11 @@
       border-radius: 6px;
       overflow: hidden;
       border: 2px solid var(--gold-border);
-      max-height: 200px;
     }
 
     .location__map-wrap img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      height: auto;
       display: block;
     }
 
@@ -628,12 +626,16 @@
       margin: 0 0 0 52px;
       border-radius: 6px;
       border: 1px solid var(--gold-border);
+      background: var(--dark-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .interior__image-col img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       display: block;
     }
 
@@ -918,12 +920,11 @@
 
     .gallery__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
-      padding: 0 52px;
+      padding: 0 52px 24px;
       flex: 1;
-      margin-bottom: 24px;
+      align-content: start;
     }
 
     .gallery__item {
@@ -931,14 +932,13 @@
       overflow: hidden;
       border: 1px solid rgba(255,209,69,0.2);
       position: relative;
+      background: var(--black);
     }
 
     .gallery__item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-      transition: transform 0.3s;
     }
 
     .gallery__item::after {
@@ -1465,7 +1465,7 @@
       </div>
       <div class="cover__location"><span>📍</span> Cervantes de Alvarado, Cartago</div>
       <div class="cover__contact"><strong>Francisco Poveda</strong> &nbsp;|&nbsp; 📞 8610-4257</div>
-      <div class="cover__aspiration">Donde cada detalle fue pensado para ti.</div>
+      <div class="cover__aspiration">Donde cada detalle fue pensado para tu comodidad.</div>
     </div>
     <div class="cover__bottom-bar"></div>
   </section>
@@ -1729,8 +1729,8 @@
       <div class="includes__item">
         <div class="includes__item-icon">🌅</div>
         <div>
-          <div class="includes__item-title">Terraza con Vista</div>
-          <div class="includes__item-text">Terraza posterior aprovechando el desnivel y la vista panorámica al sur/sureste.</div>
+          <div class="includes__item-title">Espacio chillout</div>
+          <div class="includes__item-text">Espacio chillout posterior aprovechando el desnivel del terreno y la vista panorámica al sur/sureste.</div>
         </div>
       </div>
       <div class="includes__item">
@@ -1855,7 +1855,7 @@
   </section>
 
   <!-- =====================================================
-       PÁGINA 10 — GALERÍA DE TRABAJOS
+       PÁGINA 10 — GALERÍA DE TRABAJOS (1 de 2)
   ====================================================== -->
   <section class="page gallery">
     <div class="gallery__header">
@@ -1874,6 +1874,21 @@
       <div class="gallery__item">
         <img src="Trabajo1.jpg" alt="Proyecto residencial Semantic" />
       </div>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 11 — GALERÍA DE TRABAJOS (2 de 2)
+  ====================================================== -->
+  <section class="page gallery">
+    <div class="gallery__header">
+      <div class="page-header-label">Portafolio</div>
+      <h2 class="section-title">NUESTRO TRABAJO HABLA POR NOSOTROS</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">Proyectos residenciales construidos por Semantic Construcción</p>
+    </div>
+    <div class="gallery__grid">
       <div class="gallery__item">
         <img src="Trabajo2.jpg" alt="Proyecto residencial Semantic" />
       </div>
