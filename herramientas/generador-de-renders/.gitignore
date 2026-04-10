@@ -4,6 +4,7 @@ frontend/.env*
 backend/.venv/
 backend/.env
 backend/__pycache__/
+backend/**/__pycache__/
 backend/.pytest_cache/
 backend/storage/
 *.log
