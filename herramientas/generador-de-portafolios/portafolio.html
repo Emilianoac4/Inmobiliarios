@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu Nueva Vida — Semantic Construcción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* =====================================================
+       VARIABLES Y RESET
+    ===================================================== */
+    :root {
+      --gold:        #FFD145;
+      --black:       #1A1A1A;
+      --dark-gray:   #2D2D2D;
+      --light-gray:  #F5F5F5;
+      --white:       #FFFFFF;
+      --gold-light:  rgba(255, 209, 69, 0.15);
+      --gold-border: rgba(255, 209, 69, 0.4);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--light-gray);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+    }
+
+    p, li, span {
+      font-family: 'Raleway', sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* =====================================================
+       LAYOUT — PÁGINAS
+    ===================================================== */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 24px;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+    }
+
+    .page--light {
+      background: var(--light-gray);
+      color: var(--black);
+    }
+
+    .page--dark-alt {
+      background: var(--dark-gray);
+      color: var(--white);
+    }
+
+    /* =====================================================
+       ELEMENTOS DECORATIVOS COMUNES
+    ===================================================== */
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 14px 0 22px;
+    }
+
+    .gold-line--center {
+      margin: 14px auto 22px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .brand-footer {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      text-align: center;
+      padding: 12px 0 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand-footer--dark {
+      border-top-color: rgba(0,0,0,0.1);
+      opacity: 0.4;
+      color: var(--black);
+    }
+
+    /* =====================================================
+       PÁGINA 1 — PORTADA
+    ===================================================== */
+    .cover {
+      background: var(--black);
+      color: var(--white);
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    .cover__top-bar {
+      background: var(--gold);
+      height: 5px;
+      width: 100%;
+    }
+
+    .cover__inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 48px 30px;
+      position: relative;
+    }
+
+    .cover__inner::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      filter: blur(60px);
+    }
+
+    .cover__inner::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      filter: blur(50px);
+    }
+
+    .cover__brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: 0.45em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .cover__slogan {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .cover__divider {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      margin-bottom: 40px;
+    }
+
+    .cover__project-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 58px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .cover__project-name span {
+      color: var(--gold);
+    }
+
+    .cover__tagline {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      margin-bottom: 52px;
+    }
+
+    .cover__stats {
+      display: flex;
+      gap: 36px;
+      align-items: flex-end;
+      margin-bottom: 44px;
+    }
+
+    .cover__stat {
+      text-align: center;
+      position: relative;
+    }
+
+    .cover__stat:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -18px;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: rgba(255,209,69,0.3);
+    }
+
+    .cover__stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .cover__stat-unit {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .cover__stat-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .cover__location {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+    }
+
+    .cover__location span {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+
+    .cover__contact {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+
+    .cover__contact strong {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .cover__aspiration {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      font-style: italic;
+    }
+
+    .cover__bottom-bar {
+      background: var(--gold);
+      height: 5px;
+      width: 100%;
+    }
+
+    /* =====================================================
+       PÁGINA 2 — CONCEPTO
+    ===================================================== */
+    .concept {
+      background: var(--light-gray);
+      color: var(--black);
+    }
+
+    .concept__header {
+      background: var(--black);
+      padding: 52px 56px 42px;
+      text-align: center;
+    }
+
+    .concept__pre-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .concept__title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 30px;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .concept__title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .concept__body {
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      flex: 1;
+    }
+
+    .concept__lead {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      line-height: 1.7;
+      border-left: 3px solid var(--gold);
+      padding-left: 18px;
+    }
+
+    .concept__para {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      color: #444;
+      line-height: 1.85;
+    }
+
+    .concept__pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .concept__pillar {
+      background: var(--black);
+      padding: 20px 22px;
+      border-radius: 4px;
+      border-top: 2px solid var(--gold);
+    }
+
+    .concept__pillar-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .concept__pillar-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+
+    /* =====================================================
+       PÁGINA 3 — UBICACIÓN
+    ===================================================== */
+    .location {
+      background: var(--dark-gray);
+      color: var(--white);
+    }
+
+    .location__header {
+      padding: 48px 52px 32px;
+      text-align: center;
+    }
+
+    .location__map-wrap {
+      margin: 0 52px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid var(--gold-border);
+    }
+
+    .location__map-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .location__points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 30px 52px 28px;
+      flex: 1;
+    }
+
+    .location__point {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 20px 22px;
+      position: relative;
+      border-top: 2px solid var(--gold);
+    }
+
+    .location__point-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .location__point-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .location__point-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* =====================================================
+       PÁGINA 4 — PLANO CATASTRAL
+    ===================================================== */
+    .cadastral {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .cadastral__header {
+      padding: 48px 52px 28px;
+      text-align: center;
+    }
+
+    .cadastral__image-frame {
+      flex: 1;
+      margin: 0 52px;
+      border: 2px solid var(--gold-border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark-gray);
+      position: relative;
+    }
+
+    .cadastral__image-frame::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .cadastral__image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 16px;
+    }
+
+    .cadastral__footer {
+      padding: 16px 52px 24px;
+      text-align: center;
+    }
+
+    /* =====================================================
+       PÁGINA 5 — DISEÑO ARQUITECTÓNICO
+    ===================================================== */
+    .arch {
+      background: var(--dark-gray);
+      color: var(--white);
+    }
+
+    .arch__header {
+      padding: 48px 52px 28px;
+      text-align: center;
+    }
+
+    .arch__features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 0 52px;
+    }
+
+    .arch__feature {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 26px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .arch__feature-icon {
+      font-size: 26px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .arch__feature-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .arch__feature-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .arch__feature-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.9);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .arch__text {
+      padding: 28px 52px;
+      flex: 1;
+    }
+
+    .arch__text p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11.5px;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.8;
+    }
+
+    /* =====================================================
+       PÁGINA 6 — DISTRIBUCIÓN INTERIOR
+    ===================================================== */
+    .interior {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .interior__header {
+      padding: 44px 52px 24px;
+      text-align: center;
+    }
+
+    .interior__layout {
+      display: flex;
+      gap: 0;
+      flex: 1;
+    }
+
+    .interior__image-col {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      margin: 0 0 0 52px;
+      border-radius: 6px;
+      border: 1px solid var(--gold-border);
+      background: var(--dark-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .interior__image-col img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .interior__spaces-col {
+      width: 200px;
+      padding: 10px 28px 10px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .interior__space {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .interior__space-icon {
+      font-size: 16px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .interior__space-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .interior__space-detail {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    .interior__footer {
+      padding: 14px 52px 20px;
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      border-top: 1px solid rgba(255,209,69,0.2);
+      margin-top: 10px;
+    }
+
+    /* =====================================================
+       PÁGINA 7 — LO QUE INCLUYE
+    ===================================================== */
+    .includes {
+      background: var(--dark-gray);
+      color: var(--white);
+    }
+
+    .includes__header {
+      padding: 44px 52px 28px;
+      text-align: center;
+    }
+
+    .includes__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 0 52px;
+      flex: 1;
+    }
+
+    .includes__item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .includes__item-icon {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .includes__item-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .includes__item-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+    }
+
+    /* =====================================================
+       PÁGINA 8 — PERSONALIZA
+    ===================================================== */
+    .customize {
+      background: var(--light-gray);
+      color: var(--black);
+    }
+
+    .customize__header {
+      background: var(--black);
+      padding: 48px 52px 36px;
+      text-align: center;
+    }
+
+    .customize__body {
+      padding: 36px 52px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .customize__category-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      background: var(--black);
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+    }
+
+    .customize__options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .customize__option {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--white);
+      border-radius: 6px;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .customize__option-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .customize__option-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      margin-bottom: 3px;
+    }
+
+    .customize__option-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    .customize__note {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+      color: #777;
+      line-height: 1.6;
+      border-top: 1px solid #ddd;
+      padding-top: 14px;
+      margin-top: auto;
+    }
+
+    /* =====================================================
+       PÁGINA 9 — ESTILO DE VIDA
+    ===================================================== */
+    .lifestyle {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .lifestyle__header {
+      padding: 52px 56px 36px;
+      text-align: center;
+    }
+
+    .lifestyle__body {
+      padding: 0 56px 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .lifestyle__moment {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .lifestyle__moment-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.25;
+      flex-shrink: 0;
+      width: 40px;
+    }
+
+    .lifestyle__moment-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .lifestyle__moment-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.8;
+    }
+
+    .lifestyle__closing {
+      margin-top: auto;
+      padding: 22px 56px 28px;
+      text-align: center;
+      border-top: 1px solid rgba(255,209,69,0.15);
+    }
+
+    .lifestyle__closing-text {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+
+    /* =====================================================
+       PÁGINA 10 — GALERÍA
+    ===================================================== */
+    .gallery {
+      background: var(--dark-gray);
+      color: var(--white);
+    }
+
+    .gallery__header {
+      padding: 44px 52px 28px;
+      text-align: center;
+    }
+
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 52px 24px;
+      flex: 1;
+      align-content: start;
+    }
+
+    .gallery__item {
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid rgba(255,209,69,0.2);
+      position: relative;
+      background: var(--black);
+    }
+
+    .gallery__item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery__item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.4), transparent 50%);
+    }
+
+    /* =====================================================
+       PÁGINA 11 — PRECIO
+    ===================================================== */
+    .pricing {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .pricing__header {
+      padding: 48px 56px 28px;
+      text-align: center;
+    }
+
+    .pricing__price-block {
+      margin: 0 56px 28px;
+      background: var(--dark-gray);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 32px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing__price-block::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      filter: blur(40px);
+    }
+
+    .pricing__label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pricing__amount {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .pricing__amount-text {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+    }
+
+    .pricing__includes {
+      padding: 0 56px;
+      flex: 1;
+    }
+
+    .pricing__includes-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .pricing__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .pricing__list li {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pricing__list li::before {
+      content: '✅';
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .pricing__extras {
+      margin: 20px 56px 0;
+      background: rgba(255,209,69,0.07);
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      padding: 14px 20px;
+    }
+
+    .pricing__extras p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+
+    .pricing__extras p span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       PÁGINA 12 — ESTADO DEL PROYECTO
+    ===================================================== */
+    .status {
+      background: var(--dark-gray);
+      color: var(--white);
+    }
+
+    .status__header {
+      padding: 52px 56px 36px;
+      text-align: center;
+    }
+
+    .status__timeline {
+      flex: 1;
+      padding: 0 56px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .status__timeline::before {
+      content: '';
+      position: absolute;
+      left: calc(56px + 28px);
+      top: 0;
+      bottom: 40px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold) 30%, rgba(255,209,69,0.2) 100%);
+    }
+
+    .status__step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 22px 0;
+      position: relative;
+    }
+
+    .status__step:not(:last-child) {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .status__step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .status__step-num--done {
+      background: var(--gold);
+      color: var(--black);
+      border: 2px solid var(--gold);
+    }
+
+    .status__step-num--active {
+      background: var(--dark-gray);
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 4px rgba(255,209,69,0.15);
+    }
+
+    .status__step-num--pending {
+      background: transparent;
+      color: rgba(255,255,255,0.3);
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+
+    .status__step-content {
+      flex: 1;
+      padding-top: 6px;
+    }
+
+    .status__step-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .status__step-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .status__badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      align-self: center;
+      flex-shrink: 0;
+    }
+
+    .status__badge--done {
+      background: rgba(255,209,69,0.15);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+    }
+
+    .status__badge--active {
+      background: rgba(255,165,0,0.1);
+      color: #FFA500;
+      border: 1px solid rgba(255,165,0,0.3);
+    }
+
+    .status__badge--pending {
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* =====================================================
+       PÁGINA 13 — CTA
+    ===================================================== */
+    .cta {
+      background: var(--black);
+      color: var(--white);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta__top-accent {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .cta__inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 56px;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .cta__eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .cta__title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .cta__title span {
+      color: var(--gold);
+    }
+
+    .cta__subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 44px;
+    }
+
+    .cta__contact-card {
+      background: var(--dark-gray);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 32px 48px;
+      margin-bottom: 36px;
+      min-width: 320px;
+    }
+
+    .cta__contact-item {
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cta__contact-item strong {
+      color: var(--white);
+    }
+
+    .cta__contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta__button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 16px 44px;
+      border-radius: 3px;
+      text-decoration: none;
+      margin-bottom: 36px;
+    }
+
+    .cta__closing {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+    }
+
+    .cta__bottom-accent {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    /* =====================================================
+       PÁGINA 14 — APÉNDICE
+    ===================================================== */
+    .appendix {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .appendix__header {
+      padding: 44px 52px 24px;
+      text-align: center;
+    }
+
+    .appendix__tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 3px;
+      margin-bottom: 16px;
+    }
+
+    .appendix__image-frame {
+      flex: 1;
+      margin: 0 52px;
+      border: 2px solid var(--gold-border);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .appendix__image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .appendix__description {
+      margin: 20px 52px;
+      padding: 16px 22px;
+      background: var(--dark-gray);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+    }
+
+    .appendix__description p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+    }
+
+    /* =====================================================
+       SHARED HEADER / FOOTER HELPERS
+    ===================================================== */
+    .page-header-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* =====================================================
+       PRINT STYLES
+    ===================================================== */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      body {
+        background: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        max-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+
+    /* =====================================================
+       SCREEN — centering wrapper
+    ===================================================== */
+    @media screen {
+      body {
+        padding: 24px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       PÁGINA 1 — PORTADA
+  ====================================================== -->
+  <section class="page cover">
+    <div class="cover__top-bar"></div>
+    <div class="cover__inner">
+      <div class="cover__brand">SEMANTIC</div>
+      <div class="cover__slogan">Construyendo el presente, diseñando el futuro.</div>
+      <div class="cover__divider"></div>
+      <h1 class="cover__project-name"><span>TU</span> NUEVA VIDA</h1>
+      <p class="cover__tagline">Tu hogar.&nbsp;&nbsp;Tu espacio.&nbsp;&nbsp;Tu historia.</p>
+      <div class="cover__stats">
+        <div class="cover__stat">
+          <div class="cover__stat-value">250</div>
+          <div class="cover__stat-unit">m²</div>
+          <div class="cover__stat-label">Terreno</div>
+        </div>
+        <div class="cover__stat">
+          <div class="cover__stat-value">70</div>
+          <div class="cover__stat-unit">m²</div>
+          <div class="cover__stat-label">Construcción</div>
+        </div>
+        <div class="cover__stat">
+          <div class="cover__stat-value">₡45</div>
+          <div class="cover__stat-unit">M</div>
+          <div class="cover__stat-label">Precio Base</div>
+        </div>
+      </div>
+      <div class="cover__location"><span>📍</span> Cervantes de Alvarado, Cartago</div>
+      <div class="cover__contact"><strong>Francisco Poveda</strong> &nbsp;|&nbsp; 📞 8610-4257</div>
+      <div class="cover__aspiration">Donde cada detalle fue pensado para tu comodidad.</div>
+    </div>
+    <div class="cover__bottom-bar"></div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 2 — CONCEPTO DEL PROYECTO
+  ====================================================== -->
+  <section class="page concept">
+    <div class="concept__header">
+      <div class="page-header-label" style="color: var(--gold); opacity:1;">El Proyecto</div>
+      <h2 class="section-title" style="color:var(--white);">MÁS QUE UNA CASA,<br><em style="color:var(--gold); font-style:normal;">UN ESTILO DE VIDA</em></h2>
+    </div>
+    <div class="concept__body">
+      <p class="concept__lead">
+        "Tu Nueva Vida" no es simplemente una vivienda — es la decisión de vivir exactamente como siempre lo imaginaste: con espacio, libertad y un entorno que renueva el alma cada mañana.
+      </p>
+      <p class="concept__para">
+        Diseñada para quienes valoran lo esencial sin renunciar a la elegancia, esta residencia contemporánea nace de la convicción de que un hogar debe ser mucho más que cuatro paredes. Es el escenario donde se escriben las historias que más importan. Cada rincón fue concebido con intención: materiales naturales que perduran, líneas limpias que inspiran y una orientación que aprovecha al máximo la luz, el paisaje y la brisa del entorno.
+      </p>
+      <p class="concept__para">
+        Situada en las alturas de Cervantes de Alvarado, la propiedad ofrece una vista panorámica privilegiada al sur/sureste que pocos proyectos residenciales de la región pueden igualar. Rodeada de terreno verde sin construir, garantiza privacidad real, silencio y conexión genuina con la naturaleza — sin alejarse de los servicios y la conectividad que exige la vida moderna.
+      </p>
+      <div class="concept__pillars">
+        <div class="concept__pillar">
+          <div class="concept__pillar-title">Inversión Inteligente</div>
+          <div class="concept__pillar-text">Un terreno de 250 m² escriturado, construcción sólida en prefablock y diseño moderno que revaloriza con el tiempo.</div>
+        </div>
+        <div class="concept__pillar">
+          <div class="concept__pillar-title">Vista Panorámica</div>
+          <div class="concept__pillar-text">El desnivel natural del terreno regala una perspectiva única al sur/sureste — un activo que no tiene precio.</div>
+        </div>
+        <div class="concept__pillar">
+          <div class="concept__pillar-title">Privacidad y Entorno</div>
+          <div class="concept__pillar-text">Rodeado de zonas verdes sin construir y frente a un barrio consolidado y tranquilo.</div>
+        </div>
+        <div class="concept__pillar">
+          <div class="concept__pillar-title">Diseño Contemporáneo</div>
+          <div class="concept__pillar-text">Fachada en piedra, madera y negro con integración al paisaje — arquitectura que impresiona.</div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-footer brand-footer--dark">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 3 — UBICACIÓN Y ENTORNO
+  ====================================================== -->
+  <section class="page location">
+    <div class="location__header">
+      <div class="page-header-label">Ubicación</div>
+      <h2 class="section-title">UBICACIÓN Y ENTORNO</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.6);">Cervantes de Alvarado · Cartago · Costa Rica</p>
+    </div>
+    <div class="location__map-wrap">
+      <img src="Vista Google Maps.jpg" alt="Mapa de ubicación del proyecto" />
+    </div>
+    <div class="location__points">
+      <div class="location__point">
+        <span class="location__point-icon">🛣️</span>
+        <div class="location__point-title">Acceso Directo</div>
+        <div class="location__point-text">Carretera 100% asfaltada con salida directa hacia Cervantes y Santiago.</div>
+      </div>
+      <div class="location__point">
+        <span class="location__point-icon">🏘️</span>
+        <div class="location__point-title">Entorno Residencial</div>
+        <div class="location__point-text">Frente al proyecto hay un pequeño barrio consolidado y tranquilo.</div>
+      </div>
+      <div class="location__point">
+        <span class="location__point-icon">🌄</span>
+        <div class="location__point-title">Vista Panorámica</div>
+        <div class="location__point-text">Gracias al desnivel del terreno, la propiedad cuenta con una espectacular vista al sur/sureste.</div>
+      </div>
+      <div class="location__point">
+        <span class="location__point-icon">🌿</span>
+        <div class="location__point-title">Zona Natural</div>
+        <div class="location__point-text">Lo que rodea la propiedad es terreno verde sin construir, garantizando privacidad y silencio.</div>
+      </div>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 4 — PLANO CATASTRAL
+  ====================================================== -->
+  <section class="page cadastral">
+    <div class="cadastral__header">
+      <div class="page-header-label">Terreno</div>
+      <h2 class="section-title">PLANO CATASTRAL</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">Plano 3-2216000-2020 &nbsp;·&nbsp; Área: 250 m² &nbsp;|&nbsp; Cervantes, Alvarado, Cartago</p>
+    </div>
+    <div class="cadastral__image-frame">
+      <img src="Plano Catastro.jpg" alt="Plano catastral del terreno" />
+    </div>
+    <div class="cadastral__footer">
+      <p style="font-family:'Raleway',sans-serif; font-size:9px; letter-spacing:0.25em; color:rgba(255,255,255,0.35); text-transform:uppercase;">SEMANTIC CONSTRUCCIÓN &nbsp;|&nbsp; Tu Nueva Vida</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 5 — DISEÑO ARQUITECTÓNICO
+  ====================================================== -->
+  <section class="page arch">
+    <div class="arch__header">
+      <div class="page-header-label">Arquitectura</div>
+      <h2 class="section-title">DISEÑO ARQUITECTÓNICO</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">Fachada moderna · Construcción en prefablock · 1 nivel</p>
+    </div>
+    <div class="arch__features">
+      <div class="arch__feature">
+        <div class="arch__feature-icon">🏠</div>
+        <div>
+          <div class="arch__feature-value">Prefablock</div>
+          <div class="arch__feature-label">Sistema Constructivo</div>
+          <div class="arch__feature-name">Solidez &amp; Durabilidad</div>
+        </div>
+      </div>
+      <div class="arch__feature">
+        <div class="arch__feature-icon">📐</div>
+        <div>
+          <div class="arch__feature-value">70 m²</div>
+          <div class="arch__feature-label">Área Construcción</div>
+          <div class="arch__feature-name">Espacio Optimizado</div>
+        </div>
+      </div>
+      <div class="arch__feature">
+        <div class="arch__feature-icon">🎨</div>
+        <div>
+          <div class="arch__feature-value">Piedra + Madera + Negro</div>
+          <div class="arch__feature-label">Fachada</div>
+          <div class="arch__feature-name">Diseño Contemporáneo</div>
+        </div>
+      </div>
+      <div class="arch__feature">
+        <div class="arch__feature-icon">🚗</div>
+        <div>
+          <div class="arch__feature-value">2 vehículos</div>
+          <div class="arch__feature-label">Estacionamiento</div>
+          <div class="arch__feature-name">Acceso Cómodo</div>
+        </div>
+      </div>
+    </div>
+    <div class="arch__text">
+      <p>
+        La propuesta arquitectónica de Tu Nueva Vida se articula en torno a tres principios: integración con el entorno natural, uso inteligente de los materiales y generosidad en los espacios. La fachada combina piedra rústica, madera y acabados en negro que confieren al inmueble una identidad visual poderosa y atemporal. Los amplios ventanales capturan la vista panorámica y permiten que la luz natural sea el elemento decorativo principal. Cada metro cuadrado fue concebido para que la casa respire, fluya y se adapte a quienes la habiten — hoy y en el futuro.
+      </p>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 6 — DISTRIBUCIÓN INTERIOR
+  ====================================================== -->
+  <section class="page interior">
+    <div class="interior__header">
+      <div class="page-header-label">Distribución</div>
+      <h2 class="section-title">DISTRIBUCIÓN INTERIOR</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.5);">ESPACIOS DEL HOGAR</p>
+    </div>
+    <div class="interior__layout">
+      <div class="interior__image-col">
+        <img src="Propuesta de distribución.jpg" alt="Plano de distribución interior" />
+      </div>
+      <div class="interior__spaces-col">
+        <div class="interior__space">
+          <div class="interior__space-icon">🛏️</div>
+          <div>
+            <div class="interior__space-name">Dormitorio 1</div>
+            <div class="interior__space-detail">3.80 × 3.10 m</div>
+          </div>
+        </div>
+        <div class="interior__space">
+          <div class="interior__space-icon">🛏️</div>
+          <div>
+            <div class="interior__space-name">Dormitorio 2</div>
+            <div class="interior__space-detail">2.80 × 3.10 m</div>
+          </div>
+        </div>
+        <div class="interior__space">
+          <div class="interior__space-icon">🛁</div>
+          <div>
+            <div class="interior__space-name">Baño</div>
+            <div class="interior__space-detail">Completo</div>
+          </div>
+        </div>
+        <div class="interior__space">
+          <div class="interior__space-icon">🍳</div>
+          <div>
+            <div class="interior__space-name">Cocina</div>
+            <div class="interior__space-detail">Abierta integrada</div>
+          </div>
+        </div>
+        <div class="interior__space">
+          <div class="interior__space-icon">🛋️</div>
+          <div>
+            <div class="interior__space-name">Sala / Comedor</div>
+            <div class="interior__space-detail">Espacio abierto</div>
+          </div>
+        </div>
+        <div class="interior__space">
+          <div class="interior__space-icon">🧺</div>
+          <div>
+            <div class="interior__space-name">Lavandería</div>
+            <div class="interior__space-detail">Incluida</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="interior__footer">ÁREA TOTAL: 70 m² &nbsp;|&nbsp; TERRENO: 250 m²</div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 7 — LO QUE INCLUYE TU HOGAR
+  ====================================================== -->
+  <section class="page includes">
+    <div class="includes__header">
+      <div class="page-header-label">Incluido</div>
+      <h2 class="section-title">LO QUE INCLUYE TU HOGAR</h2>
+      <span class="gold-line gold-line--center"></span>
+    </div>
+    <div class="includes__grid">
+      <div class="includes__item">
+        <div class="includes__item-icon">🧱</div>
+        <div>
+          <div class="includes__item-title">Sistema Prefablock</div>
+          <div class="includes__item-text">Construcción sólida, eficiente y de larga durabilidad.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">🏡</div>
+        <div>
+          <div class="includes__item-title">Piso a elegir</div>
+          <div class="includes__item-text">Cerámica estándar o porcelanato — tú decides el estilo.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">⚡</div>
+        <div>
+          <div class="includes__item-title">Servicios Completos</div>
+          <div class="includes__item-text">Sistema eléctrico, tubería e instalaciones incluidas.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">🚗</div>
+        <div>
+          <div class="includes__item-title">Zona de Autos</div>
+          <div class="includes__item-text">Espacio para 2 vehículos frente a la propiedad.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">🌿</div>
+        <div>
+          <div class="includes__item-title">Área Verde</div>
+          <div class="includes__item-text">Zona verde en el terreno para jardín y disfrute al aire libre.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">🌅</div>
+        <div>
+          <div class="includes__item-title">Espacio chillout</div>
+          <div class="includes__item-text">Espacio chillout posterior aprovechando el desnivel del terreno y la vista panorámica al sur/sureste.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">🔒</div>
+        <div>
+          <div class="includes__item-title">Cierre Perimetral</div>
+          <div class="includes__item-text">Tapia posterior, malla ciclón con enredadera en laterales y verja metálica frontal.</div>
+        </div>
+      </div>
+      <div class="includes__item">
+        <div class="includes__item-icon">🚪</div>
+        <div>
+          <div class="includes__item-title">Portón Integrado</div>
+          <div class="includes__item-text">Portón de acceso vehicular y peatonal estilo horizontal negro.</div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 8 — PERSONALIZA TU HOGAR
+  ====================================================== -->
+  <section class="page customize">
+    <div class="customize__header">
+      <div class="page-header-label" style="color:var(--gold); opacity:1;">Opcionales</div>
+      <h2 class="section-title" style="color:var(--white);">PERSONALIZA TU HOGAR</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.6);">Extras opcionales disponibles para adaptar la casa a tu gusto y presupuesto</p>
+    </div>
+    <div class="customize__body">
+      <div>
+        <div class="customize__category-title">Acabados</div>
+        <div class="customize__options">
+          <div class="customize__option">
+            <div class="customize__option-icon">🪣</div>
+            <div>
+              <div class="customize__option-title">Porcelanato de Mayor Calidad</div>
+              <div class="customize__option-text">Porcelanato importado premium en todas las áreas sociales y habitaciones.</div>
+            </div>
+          </div>
+          <div class="customize__option">
+            <div class="customize__option-icon">🚿</div>
+            <div>
+              <div class="customize__option-title">Grifería y Sanitarios de Gama Alta</div>
+              <div class="customize__option-text">Grifos, ducha y sanitarios de marca con diseño moderno y durabilidad superior.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="customize__category-title">Diseño</div>
+        <div class="customize__options">
+          <div class="customize__option">
+            <div class="customize__option-icon">🏛️</div>
+            <div>
+              <div class="customize__option-title">Cielos Rasos Decorativos</div>
+              <div class="customize__option-text">Diseño en drywall con molduras y detalle de iluminación integrada.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="customize__category-title">A Coordinar</div>
+        <div class="customize__options">
+          <div class="customize__option">
+            <div class="customize__option-icon">✏️</div>
+            <div>
+              <div class="customize__option-title">Acabado Personalizado</div>
+              <div class="customize__option-text">¿Tienes otra idea? Coordinamos cualquier acabado o detalle adicional que desees.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="customize__note">* El precio base es ₡45,000,000. Cada upgrade se cotiza y agrega de forma separada según los materiales elegidos.</div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 9 — ESTILO DE VIDA
+  ====================================================== -->
+  <section class="page lifestyle">
+    <div class="lifestyle__header">
+      <div class="page-header-label">Experiencia</div>
+      <h2 class="section-title" style="color:var(--white);">TU ESTILO DE VIDA</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.5);">Así se vive en Tu Nueva Vida</p>
+    </div>
+    <div class="lifestyle__body">
+      <div class="lifestyle__moment">
+        <div class="lifestyle__moment-num">01</div>
+        <div>
+          <div class="lifestyle__moment-title">Despiertas con la mejor vista de Cartago</div>
+          <div class="lifestyle__moment-text">Cada mañana la luz entra por tus ventanas trazando la silueta del paisaje al sur/sureste. El verde de los cerros, el cielo abierto — una panorámica que otros pagarían en vacaciones y tú la tienes desde casa.</div>
+        </div>
+      </div>
+      <div class="lifestyle__moment">
+        <div class="lifestyle__moment-num">02</div>
+        <div>
+          <div class="lifestyle__moment-title">El silencio que hace falta</div>
+          <div class="lifestyle__moment-text">No hay ruido de tráfico, no hay construcciones al frente. Solo el sonido de la naturaleza que rodea tu propiedad. Un entorno verde sin construir que protege tu privacidad y te devuelve la tranquilidad que la ciudad no da.</div>
+        </div>
+      </div>
+      <div class="lifestyle__moment">
+        <div class="lifestyle__moment-num">03</div>
+        <div>
+          <div class="lifestyle__moment-title">La terraza que lo cambia todo</div>
+          <div class="lifestyle__moment-text">Al final del día, la terraza posterior con vista panorámica se convierte en el lugar favorito de la familia. Un café, una conversación, el cielo que cambia de color — momentos que se graban para siempre.</div>
+        </div>
+      </div>
+      <div class="lifestyle__moment">
+        <div class="lifestyle__moment-num">04</div>
+        <div>
+          <div class="lifestyle__moment-title">Espacios que fluyen y te liberan</div>
+          <div class="lifestyle__moment-text">La cocina abierta integrada a la sala crea un espacio social amplio donde la convivencia sucede de manera natural. Cada ambiente fue diseñado para que las personas se muevan, compartan y se sientan en casa desde el primer día.</div>
+        </div>
+      </div>
+    </div>
+    <div class="lifestyle__closing">
+      <p class="lifestyle__closing-text">"Tu Nueva Vida no es solo un inmueble. Es el lugar donde tu historia empieza de nuevo."</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 10 — GALERÍA DE TRABAJOS (1 de 2)
+  ====================================================== -->
+  <section class="page gallery">
+    <div class="gallery__header">
+      <div class="page-header-label">Portafolio</div>
+      <h2 class="section-title">NUESTRO TRABAJO HABLA POR NOSOTROS</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">Proyectos residenciales construidos por Semantic Construcción</p>
+    </div>
+    <div class="gallery__grid">
+      <div class="gallery__item">
+        <img src="ApiceExterior.jpg" alt="Proyecto residencial Semantic — exterior" />
+      </div>
+      <div class="gallery__item">
+        <img src="ApiceInterior.jpg" alt="Proyecto residencial Semantic — interior" />
+      </div>
+      <div class="gallery__item">
+        <img src="Trabajo1.jpg" alt="Proyecto residencial Semantic" />
+      </div>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 11 — GALERÍA DE TRABAJOS (2 de 2)
+  ====================================================== -->
+  <section class="page gallery">
+    <div class="gallery__header">
+      <div class="page-header-label">Portafolio</div>
+      <h2 class="section-title">NUESTRO TRABAJO HABLA POR NOSOTROS</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">Proyectos residenciales construidos por Semantic Construcción</p>
+    </div>
+    <div class="gallery__grid">
+      <div class="gallery__item">
+        <img src="Trabajo2.jpg" alt="Proyecto residencial Semantic" />
+      </div>
+      <div class="gallery__item">
+        <img src="Trabajo3.jpg" alt="Proyecto residencial Semantic" />
+      </div>
+      <div class="gallery__item">
+        <img src="Trabajo4.jpg" alt="Proyecto residencial Semantic" />
+      </div>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 11 — PRECIO E INVERSIÓN
+  ====================================================== -->
+  <section class="page pricing">
+    <div class="pricing__header">
+      <div class="page-header-label">Inversión</div>
+      <h2 class="section-title">PRECIO E INVERSIÓN</h2>
+      <span class="gold-line gold-line--center"></span>
+    </div>
+    <div class="pricing__price-block">
+      <div class="pricing__label">Precio Base</div>
+      <div class="pricing__amount">₡45,000,000</div>
+      <div class="pricing__amount-text">Cuarenta y cinco millones de colones &nbsp;—&nbsp; Precio negociable</div>
+    </div>
+    <div class="pricing__includes">
+      <div class="pricing__includes-title">¿Qué incluye el precio base?</div>
+      <ul class="pricing__list">
+        <li>Terreno de 250 m² escriturado</li>
+        <li>Cocina abierta integrada a sala</li>
+        <li>Construcción de 70 m² en prefablock</li>
+        <li>Lavandería incluida</li>
+        <li>2 habitaciones + 1 baño completo</li>
+        <li>Piso de cerámica o porcelanato</li>
+        <li>Sistema eléctrico e instalaciones</li>
+        <li>Cierre perimetral completo</li>
+        <li>Zona de 2 autos + área verde + terraza</li>
+      </ul>
+    </div>
+    <div class="pricing__extras">
+      <p><span>💡 Extras disponibles:</span> Grifería y sanitarios de gama alta &nbsp;·&nbsp; Cielos rasos en drywall &nbsp;·&nbsp; Acabados personalizados</p>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 12 — ESTADO DEL PROYECTO
+  ====================================================== -->
+  <section class="page status">
+    <div class="status__header">
+      <div class="page-header-label">Avance</div>
+      <h2 class="section-title">ESTADO DEL PROYECTO</h2>
+      <span class="gold-line gold-line--center"></span>
+    </div>
+    <div class="status__timeline">
+      <div class="status__step">
+        <div class="status__step-num status__step-num--done">01</div>
+        <div class="status__step-content">
+          <div class="status__step-title">Planos Listos</div>
+          <div class="status__step-text">Planos arquitectónicos aprobados y listos.</div>
+        </div>
+        <div class="status__badge status__badge--done">✅ Completado</div>
+      </div>
+      <div class="status__step">
+        <div class="status__step-num status__step-num--active">02</div>
+        <div class="status__step-content">
+          <div class="status__step-title">Permisos en Trámite</div>
+          <div class="status__step-text">Permisos municipales y CFIA en gestión activa.</div>
+        </div>
+        <div class="status__badge status__badge--active">🔄 En Proceso</div>
+      </div>
+      <div class="status__step">
+        <div class="status__step-num status__step-num--pending">03</div>
+        <div class="status__step-content">
+          <div class="status__step-title">Inicio de Construcción</div>
+          <div class="status__step-text">Inicio inmediato tras aprobación de permisos.</div>
+        </div>
+        <div class="status__badge status__badge--pending">⏳ Próximo</div>
+      </div>
+      <div class="status__step">
+        <div class="status__step-num status__step-num--pending">04</div>
+        <div class="status__step-content">
+          <div class="status__step-title">Entrega de Llave</div>
+          <div class="status__step-text">Entrega del proyecto terminado al propietario.</div>
+        </div>
+        <div class="status__badge status__badge--pending">⏳ Próximo</div>
+      </div>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 13 — LLAMADO A LA ACCIÓN
+  ====================================================== -->
+  <section class="page cta">
+    <div class="cta__top-accent"></div>
+    <div class="cta__inner">
+      <div class="cta__eyebrow">Da el primer paso</div>
+      <h2 class="cta__title">¡Este puede ser<br><span>tu nuevo hogar!</span></h2>
+      <p class="cta__subtitle">Contáctanos y demos el primer paso juntos.</p>
+      <div class="cta__contact-card">
+        <div class="cta__contact-item"><span>👤</span> <strong>Francisco Poveda</strong></div>
+        <div class="cta__contact-item"><span>📞</span> 8610-4257</div>
+        <div class="cta__contact-item"><span>🏗️</span> Semantic Construcción</div>
+        <div class="cta__contact-item"><span>📍</span> Cervantes de Alvarado, Cartago</div>
+      </div>
+      <a class="cta__button" href="tel:+50686104257">QUIERO SABER MÁS &rarr;</a>
+      <p class="cta__closing">"Construyendo el presente, diseñando el futuro."</p>
+    </div>
+    <div class="cta__bottom-accent"></div>
+  </section>
+
+  <!-- =====================================================
+       PÁGINA 14 — APÉNDICE: PROPUESTA DE FACHADA
+  ====================================================== -->
+  <section class="page appendix">
+    <div class="appendix__header">
+      <div class="appendix__tag">Apéndice</div>
+      <h2 class="section-title">PROPUESTA DE FACHADA</h2>
+      <span class="gold-line gold-line--center"></span>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.5);">Visualización conceptual del diseño exterior</p>
+    </div>
+    <div class="appendix__image-frame">
+      <img src="ccd0da58-590b-4676-99c4-33d2368e64fa.jpg" alt="Propuesta de fachada — Tu Nueva Vida" />
+    </div>
+    <div class="appendix__description">
+      <p>Propuesta conceptual de fachada para el proyecto Tu Nueva Vida. Diseño contemporáneo que combina piedra natural, madera y elementos en negro, integrando la vivienda con el paisaje de Cervantes de Alvarado. La composición equilibra volúmenes limpios con texturas naturales para lograr una imagen premium y atemporal.</p>
+    </div>
+    <div class="brand-footer">SEMANTIC CONSTRUCCIÓN &nbsp;·&nbsp; Tu Nueva Vida</div>
+  </section>
+
+</body>
+</html>
